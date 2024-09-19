@@ -45,7 +45,7 @@ bit_writer.write_int(integer_to_write, num_bits_to_write)
 var integer = bit_reader.read_int(num_bits_to_read)
 ```
 Note: This integer will be unsigned. Theres also an option to write a signed integer (write_signed_int)
-## Add your own compression
+# Add your own compression
 Just use the write_bit-/write_bool-method to create your own custom compression. All bits of the PackedByteArray will be used automatically, guaranteeing the maximum compression possible.
 
 # Should you use it?
