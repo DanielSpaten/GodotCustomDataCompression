@@ -57,9 +57,7 @@ These scripts are useful **If**:
 If these cases dont apply, you probably dont need this.
 
 # Here are the scripts:
-https://github.com/DanielSpaten/GodotCustomDataCompression
-
-[details="BitWriter"]
+## BitWriter
 ```
 class_name BitWriter extends RefCounted
 
@@ -148,9 +146,8 @@ func get_byte_array() -> PackedByteArray:
 func bits_written() -> int:
 	return (_data.size()*8) + (7 - _bit_pointer)
 ```
-[/details]
 
-[details="BitReader"]
+## BitReader
 ```
 class_name BitReader extends RefCounted
 
@@ -224,7 +221,6 @@ func read_signed_var_int() -> int:
 	return value
 
 ```
-[/details]
 
 # Conclusion
 This is my first real contribution to the Godot-Ecosystem. I really enjoy this community and hope this can be useful somehow.
