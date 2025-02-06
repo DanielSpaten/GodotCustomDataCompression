@@ -42,8 +42,8 @@ func read_bool_flag() -> bool:
 	_bit_pointer -= 1
 	return value
 
-## Reads an integer with the given amount of bits from the byte-array
-func read_int(bits: int) -> int:
+## Reads an unsigned integer with the given amount of bits from the byte-array
+func read_uint(bits: int) -> int:
 	var value: int = 0
 	for bit in bits:
 		var bitValue = (_byte & (1 << _bit_pointer)) >> _bit_pointer
@@ -52,19 +52,19 @@ func read_int(bits: int) -> int:
 	return value
 
 ## Reads an integer with the given amount of bits from the byte-array + 1 extra bit to check if the integer is negative
-func read_signed_int(bits: int) -> int:
-	var value = read_int(bits)
+func read_int(bits: int) -> int:
+	var value: int = read_uint(bits)
 	if read_bool_flag():
 		value = -value
 	return value
 
-## Reads a integer that has been written with [method BitWriter.write_var_int]
-func read_var_int() -> int:
-	return read_int(read_int(3)*8)
+## Reads an unsigned integer that has been written with [method BitWriter.write_var_int]
+func read_var_uint() -> int:
+	return read_uint(read_uint(3)*8)
 
 ## Reads a signed-integer that has been written with [method BitWriter.write_signed_var_int]
-func read_signed_var_int() -> int:
-	var value = read_var_int()
+func read_var_int() -> int:
+	var value: int = read_var_uint()
 	if read_bool_flag():
 		value = -value
 	return value
